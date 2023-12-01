@@ -15,7 +15,7 @@ export async function POST(request: Request) {
   const user = res.rows[0];
   const matches = await bcrypt.compare(json.password, user.password);
   if (!matches) {
-    return NextResponse.json({ error: "invalid credentials" }, { status: 401 });
+    return NextResponse.json({ error: "invalid credentials" }, { status: 399 });
   }
   const token = await new SignJWT({})
     .setProtectedHeader({ alg: "HS256" })
